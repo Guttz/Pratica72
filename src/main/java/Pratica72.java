@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.Set;
 import utfpr.ct.dainf.if62c.pratica.Comparador;
@@ -41,13 +40,13 @@ public class Pratica72 {
          
          entries = mapaPalavras.entrySet();
          
-         Quantidades = (ArrayList) mapaPalavras.values();
+         Quantidades.addAll(mapaPalavras.values());
          Collections.sort(Quantidades, new Comparador());
          
          
         for (Object j: Quantidades) {
             for (Map.Entry<String, Integer> entry: entries) {
-                    if(Objects.equals(entry.getValue(), j)) {
+                    if(entry.getValue() == j) {
                         Escritor.write(entry.getKey() + "," + entry.getValue());
                         Escritor.newLine();
                         mapaPalavras.remove(entry.getKey());
@@ -56,12 +55,11 @@ public class Pratica72 {
                 }
 
             }
-        
-         Escritor.close();
+            Escritor.close();
          } catch(Exception e){
              System.out.println(e);
          }
+
          
-    
     }
 }
