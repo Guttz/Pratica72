@@ -17,7 +17,7 @@ import java.util.StringTokenizer;
  */
 public class ContadorPalavras {
 
-    BufferedReader Leitor;
+    private BufferedReader Leitor;
 
     public ContadorPalavras(String Path) throws FileNotFoundException {
         Leitor = new BufferedReader(new FileReader(Path));
