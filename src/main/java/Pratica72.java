@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -24,8 +25,11 @@ public class Pratica72 {
     
      public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); 
+        
          String Path;
+         
          HashMap mapaPalavras;
+         
          ArrayList Quantidades = new ArrayList();
          
          System.out.println("Digite o caminho do diretorio");
@@ -34,14 +38,24 @@ public class Pratica72 {
          Set<Map.Entry<String, Integer>> entries;
          
          try{
-         BufferedWriter Escritor = new BufferedWriter(new FileWriter(Path+".out"));    
-         ContadorPalavras Data = new ContadorPalavras(Path);
-         mapaPalavras = Data.getPalavras();
-         
-         entries = mapaPalavras.entrySet();
-         
-         Quantidades.addAll(mapaPalavras.values());
-         Collections.sort(Quantidades, new Comparador());
+            BufferedWriter Escritor = new BufferedWriter(new FileWriter(Path+".out"));
+            
+            ContadorPalavras Data = new ContadorPalavras(Path);
+            
+            mapaPalavras = Data.getPalavras();
+
+            entries = mapaPalavras.entrySet();
+
+            Quantidades.addAll(mapaPalavras.values());
+            
+            Collections.sort(Quantidades, new Comparator<Integer>() {
+
+                @Override
+                     public int compare(Integer o1, Integer o2) {
+                         return  o2 - o1;
+                 }
+             
+        });
          
          
         for (Object j: Quantidades) {
